@@ -1,11 +1,18 @@
+rethinkdb_backup:
+  build: .
+  environment:
+    - CRON_TIME=* * * * *
+    - RETHINKDB_DB=tsab
+  links:
+    - rethinkdb
+  # volumes_from:
+    # - rethinkdb
+  volumes:
+    - /backup:/backup
 rethinkdb:
   image: 'rethinkdb:2.2.0'
-  command: 'rethinkdb'
+  command: 'rethinkdb --bind all'
   ports:
     - '8080:8080'
     - '28015:28015'
   restart: always
-rethinkdb_backup:
-  image: this
-  links:
-    - rethinkdb

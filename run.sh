@@ -16,7 +16,7 @@ cat <<EOF >> /backup.sh
 #!/bin/bash
 MAX_BACKUPS=${MAX_BACKUPS}
 
-BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H\%M\%S).sql
+BACKUP_NAME=\$(date +\%Y.\%m.\%d.\%H\%M\%S).data
 
 echo "=> Backup started: \${BACKUP_NAME}"
 if ${BACKUP_CMD} ;then
@@ -34,7 +34,8 @@ if [ -n "\${MAX_BACKUPS}" ]; then
         rm -rf /backup/\${BACKUP_TO_BE_DELETED}
     done
 fi
-echo "=> Backup done"
+echo "=> Backup finished"
+
 EOF
 chmod +x /backup.sh
 
@@ -48,7 +49,7 @@ if rethinkdb -c ${RETHINKDB_HOST}:${RETHINKDB_PORT} < \$1 ;then
 else
     echo "   Restore failed"
 fi
-echo "=> Done"
+echo "=> Restore Done"
 EOF
 chmod +x /restore.sh
 
