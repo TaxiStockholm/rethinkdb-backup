@@ -8,8 +8,10 @@ RETHINKDB_PORT=${RETHINKDB_PORT_1_28015_TCP_PORT:-${RETHINKDB_PORT}}
 [ -z "${RETHINKDB_HOST}" ] && { echo "=> RETHINKDB_HOST cannot be empty" && exit 1; }
 [ -z "${RETHINKDB_PORT}" ] && { echo "=> RETHINKDB_PORT cannot be empty" && exit 1; }
 
-BACKUP_CMD="rethinkdb dump -c ${RETHINKDB_HOST}:${RETHINKDB_PORT} -e ${RETHINKDB_DB} ${EXTRA_OPTS} > /backup/"'${BACKUP_NAME}'
+echo "RETHINKDB: HOST: ${RETHINKDB_HOST} | PORT: ${RETHINKDB_PORT}"
 
+BACKUP_CMD="rethinkdb dump -c ${RETHINKDB_HOST}:${RETHINKDB_PORT} -e ${RETHINKDB_DB} ${EXTRA_OPTS} > ~/backup/"'${BACKUP_NAME}'
+# rethinkdb dump -c 172.17.0.2:28015 > /backup/x
 echo "=> Creating backup script"
 rm -f /backup.sh
 cat <<EOF >> /backup.sh
