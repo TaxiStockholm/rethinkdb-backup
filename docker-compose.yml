@@ -2,13 +2,12 @@ rethinkdb_backup:
   build: .
   environment:
     - CRON_TIME=* * * * *
+    - RETHINKDB_ENV=DEVELOPMENT
   links:
-    - rethinkdb
-  # volumes_from:
-    # - rethinkdb
+    - rethinkdb-dev
   volumes:
     - /backup:/backup
-rethinkdb:
+rethinkdb-dev:
   image: 'rethinkdb:2.2.0'
   command: 'rethinkdb --bind all'
   ports:

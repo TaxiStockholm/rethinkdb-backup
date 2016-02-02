@@ -20,6 +20,7 @@ Moreover, if you link `rethinkdb-backup` to a rethinkdb container(e.g. `rethinkd
     RETHINKDB_HOST      the host/ip of your rethinkdb database
     RETHINKDB_PORT      the port number of your rethinkdb database
     RETHINKDB_DB        the database name to dump. Default: `test`
+    RETHINKDB_ENV       the environment, DEVELOPMENT, TEST or PRODUCTION
     EXTRA_OPTS      the extra options to pass to rethinkdb dump command
     CRON_TIME       the interval of cron job to run rethinkdb dump. `0 0 * * *` by default, which is every day at 00:00
     MAX_BACKUPS     the number of backups to keep. When reaching the limit, the old backup will be discarded. No limit by default
