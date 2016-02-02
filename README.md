@@ -1,19 +1,19 @@
 # rethinkdb-backup
 
-This image runs rethinkdb dump to backup data using cronjob to folder `/backup`
+This image runs rethinkdb dump to backup data using cronjob to folder `/backups`
 
 ## Usage:
 
     docker run -d \
         --env RETHINKDB_HOST=rethinkdb.host \
         --env RETHINKDB_PORT=27017 \
-        --volume host.folder:/backup
+        --volume host.folder:/backups
         iteam1337/rethinkdb-backup
 
 Moreover, if you link `rethinkdb-backup` to a rethinkdb container(e.g. `rethinkdb`) with an alias named rethinkdb, this image will try to auto load the `host`, `port` if possible.
 
     docker run -d -p 27017:27017 -p 28017:28017 -e --name rethinkdb tutum/rethinkdb
-    docker run -d --link rethinkdb:rethinkdb -v host.folder:/backup tutum/rethinkdb-backup
+    docker run -d --link rethinkdb:rethinkdb -v host.folder:/backups tutum/rethinkdb-backup
 
 ## Parameters
 
@@ -31,8 +31,8 @@ Moreover, if you link `rethinkdb-backup` to a rethinkdb container(e.g. `rethinkd
 
 See the list of backups, you can run:
 
-    docker exec tutum-backup ls /backup
+    docker exec tutum-backup ls /backups
 
 To restore database from a certain backup, simply run:
 
-    docker exec tutum-backup /restore.sh /backup/2015.08.06.171901
+    docker exec tutum-backup /restore.sh /backups/2015.08.06.171901

@@ -3,13 +3,15 @@ rethinkdb_backup:
   environment:
     - CRON_TIME=* * * * *
     - RETHINKDB_ENV=DEVELOPMENT
+    - MAX_BACKUPS=20
   links:
     - rethinkdb-dev
   volumes:
-    - /backup:/backup
+    - /backups:/backups
 rethinkdb-dev:
   image: 'rethinkdb:2.2.0'
   command: 'rethinkdb --bind all'
   ports:
     - '28015:28015'
+    - '8080:8080'
   restart: always
