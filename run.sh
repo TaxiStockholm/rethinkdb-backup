@@ -27,7 +27,7 @@ fi
 
 echo "RETHINKDB: HOST: ${RETHINKDB_HOST} | PORT: ${RETHINKDB_PORT}"
 
-BACKUP_CMD="rethinkdb dump -c ${RETHINKDB_HOST}:${RETHINKDB_PORT} -e ${RETHINKDB_DB} ${EXTRA_OPTS} > ~/backup/"'${BACKUP_NAME}'
+BACKUP_CMD="rethinkdb dump -c ${RETHINKDB_HOST}:${RETHINKDB_PORT} -e ${RETHINKDB_DB} ${EXTRA_OPTS} > /backup/"'${BACKUP_NAME}'
 # rethinkdb dump -c 172.17.0.2:28015 > /backup/x
 echo "=> Creating backup script"
 rm -f /backup.sh
