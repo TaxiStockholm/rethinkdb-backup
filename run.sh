@@ -105,5 +105,5 @@ fi
 
 echo "${CRON_TIME} /scripts/backups.sh >> /RETHINKDB_backup.log 2>&1" > /crontab.conf
 crontab  /crontab.conf
-echo "=> Running cron job"
+echo "=> Running rethinkdb backups as a cron for ${CRON_TIME}"
 exec cron -f
