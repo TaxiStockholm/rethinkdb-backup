@@ -35,7 +35,7 @@ cat <<EOF >> /scripts/backups.sh
 export PATH=$PATH:/usr/local/bin/:/backups/:/scripts/
 
 MAX_BACKUPS=${MAX_BACKUPS}
-BACKUP_NAME=\rethinkdb_${RETHINKDB_ENV,,}_$(date +\%m_\%d_\%Y_\%H_\%M_\%S).tar.gz
+BACKUP_NAME=\rethinkdb_${RETHINKDB_ENV,,}_\$(date +\%m_\%d_\%Y_\%H_\%M_\%S).tar.gz
 BACKUP_CMD="rethinkdb dump -c ${RETHINKDB_HOST}:${RETHINKDB_PORT} -f /backups/\${BACKUP_NAME} ${EXTRA_OPTS}"
 
 echo "=> Backup started: \${BACKUP_NAME} with \${BACKUP_CMD}"
